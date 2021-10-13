@@ -9,6 +9,7 @@ import dotenv from "dotenv";
 
 const app = express();
 const PORT = process.env.PORT;
+//const PORT = 5000;
 dotenv.config();
 
 app.use(express.json());
@@ -98,6 +99,7 @@ console.log(process.env);
 // ];
 
 async function createConnection() {
+  
     const MONGO_URL = process.env.MONGO_URL;
     const client = new MongoClient(MONGO_URL);
     await client.connect();
@@ -117,7 +119,7 @@ async function createConnection() {
 createConnection();
 
 app.get('/', (request, response) => {
-    response.send("Hello, !!! All !!!");
+    response.send("Hello, !!! All Local ENV !!!");
 });
 
 app.get('/users/:id', async (request, response) => {
